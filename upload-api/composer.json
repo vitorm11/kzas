@@ -1,0 +1,18 @@
+{
+    "name": "vitorbraga/upload-api",
+    "authors": [
+        {
+            "name": "Vitor Braga",
+            "email": "vitorm11@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "ext-fileinfo": "*"
+    }
+}
