@@ -6,12 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col">
-                                <h2 style="margin-bottom: 0;">
-                                    Funcionários
-                                </h2>
-                            </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col">Funcionários</div>
                             <div class="col-auto">
                                 <a href="{{route('employees.create')}}" class="btn btn-success text-white">
                                     Cadastrar
@@ -20,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @if($employees->count() > 0)
+                        @if($employees->count())
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -40,8 +36,8 @@
                                             <td>{{$employee->email}}</td>
                                             <td>{{$employee->phone}}</td>
                                             <td>{{$employee->cpf}}</td>
-                                            <td>
-                                                <a href="{{route('employees.show', $employee->id)}}" class="btn-sm btn-primary text-white mr-1">Visualizar</a>
+                                            <td class="text-center">
+                                                <a href="{{route('employees.show', $employee->id)}}" class="btn-sm btn-primary text-white text-decoration-none">Visualizar</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -49,16 +45,13 @@
                             </table>
 
                             {{$employees->links()}}
-
                         @else
-
                             <div class="d-flex flex-column p-5 align-items-center justify-content-center">
                                 <p>Nenhum funcionário cadastrado!</p>
-                                <a href="{{route('employees.create')}}" class="btn btn-success text-white">
+                                <a href="{{route('employees.create')}}" class="btn btn-success text-white text-decoration-none">
                                     Cadastrar
                                 </a>
                             </div>
-
                         @endif
                     </div>
                 </div>

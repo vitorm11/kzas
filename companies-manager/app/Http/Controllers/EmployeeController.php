@@ -82,6 +82,6 @@ class EmployeeController extends Controller
     {
         $employee->delete();
 
-        return redirect()->to('employees.index');
+        return redirect()->route('employees.index');
     }
 }

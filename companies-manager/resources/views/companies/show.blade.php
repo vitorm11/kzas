@@ -6,12 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col">
-                                <h2 style="margin-bottom: 0;">
-                                    Empresa: <strong>{{$company->name}}</strong>
-                                </h2>
-                            </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col">Empresa: <strong>{{$company->name}}</strong></div>
                             <div class="col-auto">
                                 <a href="{{route('companies.edit', $company->id)}}" class="btn btn-primary text-white">
                                     Editar
@@ -27,9 +23,9 @@
                         </div>
                     </div>
 
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4 text-center">
+                            <div class="col-sm-12 col-md-4 text-center d-flex align-items-center justify-content-center">
                                 <img src="{{$company->logo}}" width="150" class="logo-placeholder" />
                             </div>
                             <div class="col-sm-12 col-md-8">
@@ -43,17 +39,19 @@
                                 <p><a target="_blank" href="{{$company->website}}">{{$company->website}}</a></p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row mt-4 border-top pt-3">
+                    <div class="card-header border-top">Funcionários</div>
+
+                    <div class="card-body">
+                        <div class="row">
                             <div class="col-md-12">
-                                <h2 class="h2">Funcionarios</h2>
-
                                 @if($company->employees->count())
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
-                                                <th>Email</th>
+                                                <th>E-mail</th>
                                                 <th>Telefone</th>
                                                 <th>CPF</th>
                                                 <th></th>
@@ -66,8 +64,8 @@
                                                 <td>{{$employee->email}}</td>
                                                 <td>{{$employee->phone}}</td>
                                                 <td>{{$employee->cpf}}</td>
-                                                <td>
-                                                    <a href="{{route('employees.show', $employee->id)}}" class="btn-sm btn-primary text-white mr-1">Visualizar</a>
+                                                <td class="text-center">
+                                                    <a href="{{route('employees.show', $employee->id)}}" class="btn-sm btn-primary text-white text-decoration-none">Visualizar</a>
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -5,9 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h2 style="margin-bottom: 0;">Funcionário: {{$employee->name}}</h2>
-                    </div>
+                    <div class="card-header">Funcionário: <b>{{$employee->name}}</b></div>
 
                     <div class="card-body">
                         <div class="row">
@@ -18,7 +16,7 @@
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group">
                                                 <label>Empresa</label>
-                                                <select name="company_id" class="form-control {{$errors->has('company_id') ? 'is-invalid' : ''}} {{!is_null(old('company_id')) && !$errors->has('company_id') ? 'is-valid' : ''}}">
+                                                <select name="company_id" class="form-control @error('option') is-invalid @enderror" required>
                                                     <option value="">Selecione uma empresa</option>
                                                     @foreach($companies as $company)
                                                         <option {{$company->id == $employee->company->id ? 'selected' : ''}} value="{{$company->id}}">{{$company->name}}</option>
@@ -33,7 +31,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" value="{{is_null(old('name')) ? $employee->name : old('name')}}" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}} {{!is_null(old('name')) && !$errors->has('name') ? 'is-valid' : ''}}" name="name">
+                                                <input type="text" value="{{old('name', optional($employee)->name)}}" class="form-control @error('name') is-invalid @enderror" name="name" required>
                                                 @if($errors->has('name'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('name')}}
@@ -42,7 +40,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>E-mail</label>
-                                                <input type="email" value="{{is_null(old('email')) ? $employee->email : old('email')}}" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}} {{!is_null(old('email')) && !$errors->has('email') ? 'is-valid' : ''}}" name="email">
+                                                <input type="email" value="{{old('email', optional($employee)->email)}}" class="form-control @error('email') is-invalid @enderror" name="email" required>
                                                 @if($errors->has('email'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('email')}}
@@ -51,7 +49,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Celular</label>
-                                                <input type="text" value="{{is_null(old('phone')) ? $employee->phone : old('phone')}}" class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}} {{!is_null(old('phone')) && !$errors->has('phone') ? 'is-valid' : ''}}" name="phone">
+                                                <input type="text" value="{{old('phone', optional($employee)->phone)}}" class="form-control @error('phone') is-invalid @enderror" name="phone" required>
                                                 @if($errors->has('phone'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('phone')}}
@@ -60,7 +58,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>CPF</label>
-                                                <input type="text" value="{{is_null(old('cpf')) ? $employee->cpf : old('cpf')}}" class="form-control {{$errors->has('cpf') ? 'is-invalid' : ''}} {{!is_null(old('cpf')) && !$errors->has('cpf') ? 'is-valid' : ''}}" name="cpf">
+                                                <input type="text" value="{{old('cpf', optional($employee)->cpf)}}" class="form-control @error('cpf') is-invalid @enderror" name="cpf" required>
                                                 @if($errors->has('cpf'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('cpf')}}
@@ -72,7 +70,7 @@
                                         <div class="col-sm-12 col-md-6">
                                             <div class="form-group">
                                                 <label>CEP</label>
-                                                <input type="text" value="{{is_null(old('zipCode')) ? $employee->address->zipCode : old('zipCode')}}" class="form-control {{$errors->has('zipCode') ? 'is-invalid' : ''}} {{!is_null(old('zipCode')) && !$errors->has('zipCode') ? 'is-valid' : ''}}" name="zipCode">
+                                                <input type="text" value="{{old('zipCode', optional($employee->address)->zipCode)}}" class="form-control @error('zipCode') is-invalid @enderror" name="zipCode" required>
                                                 @if($errors->has('zipCode'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('zipCode')}}
@@ -81,7 +79,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Endereço</label>
-                                                <input type="text" value="{{is_null(old('address')) ? $employee->address->address : old('address')}}" class="form-control {{$errors->has('address') ? 'is-invalid' : ''}} {{!is_null(old('address')) && !$errors->has('address') ? 'is-valid' : ''}}" name="address">
+                                                <input type="text" value="{{old('address', optional($employee->address)->address)}}" class="form-control @error('address') is-invalid @enderror" name="address" required>
                                                 @if($errors->has('address'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('address')}}
@@ -92,7 +90,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Número</label>
-                                                        <input type="text" value="{{is_null(old('number')) ? $employee->address->number : old('number')}}" class="form-control {{$errors->has('number') ? 'is-invalid' : ''}} {{!is_null(old('number')) && !$errors->has('number') ? 'is-valid' : ''}}" name="number">
+                                                        <input type="text" value="{{old('number', optional($employee->address)->number)}}" class="form-control @error('number') is-invalid @enderror" name="number" required>
                                                         @if($errors->has('number'))
                                                             <div class="invalid-feedback">
                                                                 {{$errors->first('number')}}
@@ -103,13 +101,13 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Complemento</label>
-                                                        <input type="text" value="{{is_null(old('complement')) ? $employee->address->complement : old('complement')}}"class="form-control" name="complement">
+                                                        <input type="text" value="{{old('complement', optional($employee->address)->complement)}}" class="form-control" name="complement">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>Bairro</label>
-                                                <input type="text" value="{{is_null(old('neighborhood')) ? $employee->address->neighborhood : old('neighborhood')}}" class="form-control {{$errors->has('neighborhood') ? 'is-invalid' : ''}} {{!is_null(old('neighborhood')) && !$errors->has('neighborhood') ? 'is-valid' : ''}}" name="neighborhood">
+                                                <input type="text" value="{{old('neighborhood', optional($employee->address)->neighborhood)}}" class="form-control @error('neighborhood') is-invalid @enderror" name="neighborhood" required>
                                                 @if($errors->has('neighborhood'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('neighborhood')}}
@@ -120,7 +118,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Cidade</label>
-                                                        <input type="text" value="{{is_null(old('city')) ? $employee->address->city : old('city')}}"class="form-control {{$errors->has('city') ? 'is-invalid' : ''}} {{!is_null(old('city')) && !$errors->has('city') ? 'is-valid' : ''}}" name="city">
+                                                        <input type="text" value="{{old('city', optional($employee->address)->city)}}" class="form-control @error('city') is-invalid @enderror" name="city">
                                                         @if($errors->has('city'))
                                                             <div class="invalid-feedback">
                                                                 {{$errors->first('city')}}
@@ -131,7 +129,7 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Estado</label>
-                                                        <input type="text" value="{{is_null(old('state')) ? $employee->address->state : old('state')}}" class="form-control {{$errors->has('state') ? 'is-invalid' : ''}} {{!is_null(old('state')) && !$errors->has('state') ? 'is-valid' : ''}}" name="state">
+                                                        <input type="text" value="{{old('state', optional($employee->address)->state)}}" class="form-control @error('state') is-invalid @enderror" name="state">
                                                         @if($errors->has('state'))
                                                             <div class="invalid-feedback">
                                                                 {{$errors->first('state')}}

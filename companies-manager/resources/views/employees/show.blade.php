@@ -6,12 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col">
-                                <h2 style="margin-bottom: 0;">
-                                    Funcionário: <strong>{{$employee->name}}</strong>
-                                </h2>
-                            </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col">Funcionário: <b>{{$employee->name}}</b></div>
                             <div class="col-auto">
                                 <a href="{{route('employees.edit', $employee->id)}}" class="btn btn-primary text-white">
                                     Editar

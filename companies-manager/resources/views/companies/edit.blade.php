@@ -5,9 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h2 style="margin-bottom: 0;">Empresa: {{$company->name}}</h2>
-                    </div>
+                    <div class="card-header">Empresa: <b>{{$company->name}}</b></div>
 
                     <div class="card-body">
                         <div class="row">
@@ -29,7 +27,7 @@
                                         <div class="col-sm-12 col-md-8">
                                             <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" value="{{is_null(old('name')) ? $company->name : old('name')}}" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}} {{!is_null(old('name')) && !$errors->has('name') ? 'is-valid' : ''}}" name="name">
+                                                <input type="text" value="{{old('name', optional($company)->name)}}" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
                                                 @if($errors->has('name'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('name')}}
@@ -38,7 +36,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>E-mail</label>
-                                                <input type="email" value="{{is_null(old('email')) ? $company->email : old('email')}}" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}} {{!is_null(old('email')) && !$errors->has('email') ? 'is-valid' : ''}}" name="email">
+                                                <input type="email" value="{{old('email', optional($company)->email)}}" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email">
                                                 @if($errors->has('email'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('email')}}
@@ -47,7 +45,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Website</label>
-                                                <input type="url" value="{{is_null(old('website')) ? $company->website : old('website')}}" class="form-control {{$errors->has('website') ? 'is-invalid' : ''}} {{!is_null(old('website')) && !$errors->has('website') ? 'is-valid' : ''}}" name="website">
+                                                <input type="url" value="{{old('website', optional($company)->website)}}" class="form-control @error('name') is-invalid @enderror" name="website" required>
                                                 @if($errors->has('website'))
                                                     <div class="invalid-feedback">
                                                         {{$errors->first('website')}}

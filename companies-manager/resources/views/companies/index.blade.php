@@ -6,12 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row">
-                            <div class="col">
-                                <h2 style="margin-bottom: 0;">
-                                    Empresas
-                                </h2>
-                            </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col">Empresas</div>
                             <div class="col-auto">
                                 <a href="{{route('companies.create')}}" class="btn btn-success text-white">
                                     Cadastrar
@@ -20,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @if($companies->count() > 0)
+                        @if($companies->count())
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -35,11 +31,11 @@
                                     @foreach($companies as $company)
                                         <tr>
                                             <td><img src="{{$company->logo}}" width="150"></td>
-                                            <td>{{$company->name}}</td>
-                                            <td>{{$company->email}}</td>
-                                            <td><a target="_blank" href="{{$company->website}}">{{$company->website}}</a></td>
-                                            <td>
-                                                <a href="{{route('companies.show', $company->id)}}" class="btn-sm btn-primary text-white mr-1">Visualizar</a>
+                                            <td class="align-middle">{{$company->name}}</td>
+                                            <td class="align-middle">{{$company->email}}</td>
+                                            <td class="align-middle"><a target="_blank" href="{{$company->website}}">{{$company->website}}</a></td>
+                                            <td class="align-middle text-center">
+                                                <a href="{{route('companies.show', $company->id)}}" class="btn-sm btn-primary text-white text-decoration-none">Visualizar</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -52,11 +48,10 @@
 
                             <div class="d-flex flex-column p-5 align-items-center justify-content-center">
                                 <p>Nenhuma empresa cadastrada!</p>
-                                <a href="{{route('companies.create')}}" class="btn btn-success text-white">
+                                <a href="{{route('companies.create')}}" class="btn btn-success text-white text-decoration-none">
                                     Cadastrar
                                 </a>
                             </div>
-
                         @endif
                     </div>
                 </div>
